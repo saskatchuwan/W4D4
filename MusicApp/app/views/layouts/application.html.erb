@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MusicApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= yield %>
+    <br>
+
+    <% if logged_in? %>
+      <h2>Hello '<%= current_user.email %>'! You are signed in!</h2>
+
+      <form action='<%= session_url %>' method='post'>
+          <input type = 'hidden'
+          name = 'authenticity_token'
+          value = '<%= form_authenticity_token %>'
+        <input type='hidden' name='_method' value='delete'>
+        <input type='submit' value='Logout'>
+      </form>
+
+    <% else %>
+      <h2>'<%=logged_in?%>'</h2>
+      <form action='<%= new_session_url %>' method='post'>
+          <input type = 'hidden'
+          name = 'authenticity_token'
+          value = '<%= form_authenticity_token %>'
+        <input type='hidden' name='_method' value='get'>
+        <input type='submit' value='Log In'>
+      </form>
+
+      <form action='<%= new_user_url %>' method='post'>
+          <input type = 'hidden'
+          name = 'authenticity_token'
+          value = '<%= form_authenticity_token %>'
+          <input type='hidden' name='_method' value='get'>
+          <input type='submit' value='Sign Up'>
+      </form>
+
+    <% end %>
+
+  </body>
+
+
+</html>
