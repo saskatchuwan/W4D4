@@ -9,10 +9,20 @@
   <label for='email'>Email:
     <input type = 'text' name='user[email]'>
   </label>
-
+  <br>
+  <br>
   <label for='password'>Password:
       <input type = 'password' name='user[password]'>
   </label>
 
+  <% if flash.now[:errors] %>
+    <% flash.now[:errors].each do |error| %>
+    <%= error %><br />
+    <% end %>
+  <% end %>
+
+
+  <br>
+  <br>
   <input type='submit' value='Sign Up'>
 </form>

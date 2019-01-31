@@ -1,0 +1,28 @@
+<h1>Band Spotlight</h1>
+
+<ul>
+    <li>
+      <%= @band.name %>
+    </li>
+</ul>
+
+<form action='<%= edit_band_url%>' method='post'>
+  <input type = 'hidden' 
+        name='authenticity_token'
+        value='<%= form_authenticity_token %>'>
+
+    <input type='hidden' name= '_method' value='get'>
+    <input type='submit' value='Edit Band'>
+
+</form>
+
+<form action='<%= band_url%>' method='post'>
+  <input type = 'hidden' 
+        name='authenticity_token'
+        value='<%= form_authenticity_token %>'>
+        
+    <input type='hidden' name= '_method' value='delete'>
+    <input type='submit' value='Delete Band'>
+
+</form>
+

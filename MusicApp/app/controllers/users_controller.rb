@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def new
+  
     @user = User.new  #instantiate new user with no attributes
     render :new       #open the new user view
   end
@@ -8,10 +9,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      login_in_user!(@user)
+      log_in_user!(@user)
       redirect_to user_url(@user) # for the show path, need to always pass in user instance
     else
-      #show some error with flash[:errors]
+      flash.now[:errors] = @user.errors.full_messages
       render :new
     end
   end

@@ -1,6 +1,8 @@
 class SessionsController < ApplicationController
 
   def new
+
+    session[:session_token] = nil
     render :new
   end
 
@@ -12,7 +14,7 @@ class SessionsController < ApplicationController
       log_in_user!(@user)
       redirect_to user_url(@user)
     else
-      #display some flash error
+      flash.now[:errors] = ['Invalid credentials']
       render :new
     end
   end
