@@ -6,7 +6,19 @@
     </li>
 </ul>
 
-<form action='<%= edit_band_url%>' method='post'>
+
+<!-- <form action='<#%= new_band_album_url %>' method='post'>
+    <input type = 'hidden' 
+            name='authenticity_token'
+            value='<#%= form_authenticity_token %>'>
+
+        <input type='hidden' name= 'band_id' value='<%= @band.id %>'>
+        <input type='hidden' name= '_method' value='get'>
+        <input type='submit' value='Add Album'>
+</form>
+       -->
+
+<form action='<%= edit_band_url %>' method='post'>
   <input type = 'hidden' 
         name='authenticity_token'
         value='<%= form_authenticity_token %>'>
