@@ -10,6 +10,11 @@
 
 class Band < ApplicationRecord
   validates :name, presence:true
+
+  has_many :albums,
+    primary_key: :id,
+    foreign_key: :band_id,
+    class_name: 'Album'
   
   def self.find_by_name(name)
     @band = Band.find_by(name: name)
@@ -19,6 +24,10 @@ class Band < ApplicationRecord
     else
       return nil
     end
+  end
+
+  def band_id
+    self[:id]
   end
 
 

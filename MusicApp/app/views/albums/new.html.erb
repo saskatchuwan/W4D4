@@ -1,0 +1,36 @@
+<h1>Register a new album!</h1>
+
+<form action='<%= albums_url %>' method='post'>
+  <input type = 'hidden' 
+        name='authenticity_token'
+        value='<%= form_authenticity_token %>'>
+
+  <label for='band_name'>Band:
+    <select name='album[band_name]'>
+
+      <% Band.all.each do |band| %>
+        <option value='<%= band.name %>'
+          <%= 'selected' if @band.name == band.name %>>
+          <%= band.name %>
+        </option>
+      <% end %>
+
+    </select>
+  </label>
+
+  <label for='album_name'>Album:
+    <input type='text' name='album[album_name]'>
+  </label>
+
+  <label for='album_yr'>Year:
+      <input type='number' name='album[album_yr]'>
+  </label>
+
+  <!-- need to add option for studio -->
+  <label for='album_studio'>Studio Album:
+      <input type='radio' name='album[studio]' value='true'>Yes
+      <input type='radio' name='album[studio]' value='false'>No
+  </label>
+
+  <input type='submit' value='Register!'>
+</form>
